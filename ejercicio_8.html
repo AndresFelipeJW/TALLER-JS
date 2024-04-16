@@ -8,24 +8,19 @@
 <body>
 
 <script>
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
-
 // Ingresar dos números
 let numero1;
 let numero2;
 do {
     numero1 = prompt("Por favor, introduce el primer número:");
     numero2 = prompt("Por favor, introduce el segundo número:");
-    if (!esNumero(numero1) || !esNumero(numero2)) {
+    if (isNaN(numero1) || isNaN(numero2)) {
         alert("Por favor, introduce valores numéricos para ambos números.");
     }
-} while (!esNumero(numero1) || !esNumero(numero2));
+} while (isNaN(numero1) || isNaN(numero2));
 
-
-numero1 = parseFloat(numero1);
-numero2 = parseFloat(numero2);
+numero1 = Number(numero1);
+numero2 = Number(numero2);
 
 // Comparamos los números e indicamos cuál es mayor o si son iguales
 if (numero1 > numero2) {
@@ -35,6 +30,7 @@ if (numero1 > numero2) {
 } else {
     alert("Ambos números son iguales (" + numero1 + ").");
 }
+
 </script>
 
 </body>

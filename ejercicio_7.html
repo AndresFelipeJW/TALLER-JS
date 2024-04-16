@@ -8,30 +8,35 @@
 <body>
 
 <script>
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
+let nota1;
+do {
+    nota1 = prompt("Por favor, introduce la nota 1:");
+    if (isNaN(parseFloat(nota1))) {
+        alert("Por favor, introduce un valor numérico para la nota 1.");
+    }
+} while (isNaN(parseFloat(nota1)));
+nota1 = parseFloat(nota1);
 
-function pedirNota(numeroNota) {
-    let nota;
-    do {
-        nota = prompt("Por favor, introduce la nota " + numeroNota + ":");
-        if (!esNumero(nota)) {
-            alert("Por favor, introduce un valor numérico para la nota " + numeroNota + ".");
-        }
-    } while (!esNumero(nota));
-    return parseFloat(nota);
-}
+let nota2;
+do {
+    nota2 = prompt("Por favor, introduce la nota 2:");
+    if (isNaN(parseFloat(nota2))) {
+        alert("Por favor, introduce un valor numérico para la nota 2.");
+    }
+} while (isNaN(parseFloat(nota2)));
+nota2 = parseFloat(nota2);
 
-// Ingresar las tres notas
-let nota1 = pedirNota(1);
-let nota2 = pedirNota(2);
-let nota3 = pedirNota(3);
-
+let nota3;
+do {
+    nota3 = prompt("Por favor, introduce la nota 3:");
+    if (isNaN(parseFloat(nota3))) {
+        alert("Por favor, introduce un valor numérico para la nota 3.");
+    }
+} while (isNaN(parseFloat(nota3)));
+nota3 = parseFloat(nota3);
 
 let media = (nota1 + nota2 + nota3) / 3;
 
-// Determinamos si el estudiante está aprobado o reprobado
 let estado;
 if (media >= 3) {
     estado = "aprobado";
@@ -39,8 +44,8 @@ if (media >= 3) {
     estado = "reprobado";
 }
 
-
 alert("La nota media del estudiante es: " + media.toFixed(2) + ". Está " + estado + ".");
+
 </script>
 
 </body>

@@ -8,19 +8,13 @@
 <body>
 
 <script>
-// Función para validar si un valor es numérico
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
-
 // Ingresar dos números
 let numero1 = prompt("Por favor, introduce el primer número:");
 let numero2 = prompt("Por favor, introduce el segundo número:");
 
 // Revisamos si los valores ingresados son números
-if (esNumero(numero1) && esNumero(numero2)) 
-{
-    let suma = parseFloat(numero1) + parseFloat(numero2);
+if (!isNaN(numero1) && !isNaN(numero2)) {
+    let suma = Number(numero1) + Number(numero2);
     
     alert("La suma de los dos números es: " + suma);
 } else {

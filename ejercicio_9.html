@@ -8,24 +8,20 @@
 <body>
 
 <script>
-// Pintamos el cuadrado de asteriscos en la consola
-function pintarCuadrado(lado) 
-{
-    for (let i = 1; i <= lado; i++) {
-        let linea = "";
-        for (let j = 1; j <= lado; j++) {
-            if (i === 1 || i === lado || j === 1 || j === lado) {
-                linea += "*";
-            } else {
-                linea += " ";
-            }
+let lado = 5;
+
+for (let i = 1; i <= lado; i++) {
+    let linea = "";
+    for (let j = 1; j <= lado; j++) {
+        if (i === 1 || i === lado || j === 1 || j === lado) {
+            linea += "*";
+        } else {
+            linea += " ";
         }
-        console.log(linea);   
     }
+    console.log(linea);   
 }
 
-
-pintarCuadrado(5);
 </script>
 
 </body>

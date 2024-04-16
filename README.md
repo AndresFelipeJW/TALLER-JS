@@ -73,19 +73,13 @@ alert("Las dos cadenas concatenadas son: " + resultado);
 - Pedir dos números por pantalla con prompt y mostrar la suma de ambos.  Se debe validar que los números introducidos sean números.
 
 ```Javascript
-// Función para validar si un valor es numérico
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
-
 // Ingresar dos números
 let numero1 = prompt("Por favor, introduce el primer número:");
 let numero2 = prompt("Por favor, introduce el segundo número:");
 
 // Revisamos si los valores ingresados son números
-if (esNumero(numero1) && esNumero(numero2)) 
-{
-    let suma = parseFloat(numero1) + parseFloat(numero2);
+if (!isNaN(numero1) && !isNaN(numero2)) {
+    let suma = Number(numero1) + Number(numero2);
     
     alert("La suma de los dos números es: " + suma);
 } else {
@@ -98,19 +92,15 @@ if (esNumero(numero1) && esNumero(numero2))
 - Pedir dos números por pantalla y una operación (+, -, *, /) y mostrar en un alert el resultado de la operación.  Si la operación no es ninguna de las anteriores, se debe mostrar el mensaje "Operación incorrecta".  Se debe validar que los valores introducidos sean números.
 
 ```Javascript
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
-
 // Ingresar dos números y la operación
 let numero1 = prompt("Por favor, introduce el primer número:");
 let numero2 = prompt("Por favor, introduce el segundo número:");
 let operacion = prompt("Por favor, introduce la operación (+, -, *, /):");
 
 // Verificamos si los valores ingresados son números
-if (esNumero(numero1) && esNumero(numero2)) {
-    let num1 = parseFloat(numero1);
-    let num2 = parseFloat(numero2);
+if (!isNaN(numero1) && !isNaN(numero2)) {
+    let num1 = Number(numero1);
+    let num2 = Number(numero2);
     
     // Realizamos la operación según la opción ingresada
     let resultado;
@@ -132,8 +122,10 @@ if (esNumero(numero1) && esNumero(numero2)) {
             break;
     }
 
-    if (resultado !== undefined) {
+    if (resultado !== undefined && !isNaN(resultado)) {
         alert("El resultado de la operación es: " + resultado);
+    } else {
+        alert("El resultado de la operación no es un número válido.");
     }
 } else {
     // Si al menos uno de los valores ingresados no es numérico, mostramos un mensaje de error
@@ -146,37 +138,41 @@ if (esNumero(numero1) && esNumero(numero2)) {
 - Leer tres notas de los estudiantes y calcular la media.  Tiene que indicar si está reprobado (nota < 3) o aprobado, junto con la nota media.  Si alguna nota no es un número, no dejar de pedirlas hasta que sea correcta.
 
 ```Javascript
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
+let nota1;
+do {
+    nota1 = prompt("Por favor, introduce la nota 1:");
+    if (isNaN(parseFloat(nota1))) {
+        alert("Por favor, introduce un valor numérico para la nota 1.");
+    }
+} while (isNaN(parseFloat(nota1)));
+nota1 = parseFloat(nota1);
 
-function pedirNota(numeroNota) {
-    let nota;
-    do {
-        nota = prompt("Por favor, introduce la nota " + numeroNota + ":");
-        if (!esNumero(nota)) {
-            alert("Por favor, introduce un valor numérico para la nota " + numeroNota + ".");
-        }
-    } while (!esNumero(nota));
-    return parseFloat(nota);
-}
+let nota2;
+do {
+    nota2 = prompt("Por favor, introduce la nota 2:");
+    if (isNaN(parseFloat(nota2))) {
+        alert("Por favor, introduce un valor numérico para la nota 2.");
+    }
+} while (isNaN(parseFloat(nota2)));
+nota2 = parseFloat(nota2);
 
-// Ingresar las tres notas
-let nota1 = pedirNota(1);
-let nota2 = pedirNota(2);
-let nota3 = pedirNota(3);
-
+let nota3;
+do {
+    nota3 = prompt("Por favor, introduce la nota 3:");
+    if (isNaN(parseFloat(nota3))) {
+        alert("Por favor, introduce un valor numérico para la nota 3.");
+    }
+} while (isNaN(parseFloat(nota3)));
+nota3 = parseFloat(nota3);
 
 let media = (nota1 + nota2 + nota3) / 3;
 
-// Determinamos si el estudiante está aprobado o reprobado
 let estado;
 if (media >= 3) {
     estado = "aprobado";
 } else {
     estado = "reprobado";
 }
-
 
 alert("La nota media del estudiante es: " + media.toFixed(2) + ". Está " + estado + ".");
 ```
@@ -186,24 +182,19 @@ alert("La nota media del estudiante es: " + media.toFixed(2) + ". Está " + esta
 - Introducir dos números e indicar cuál es el mayor o si son iguales.
 
 ```Javascript
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
-
 // Ingresar dos números
 let numero1;
 let numero2;
 do {
     numero1 = prompt("Por favor, introduce el primer número:");
     numero2 = prompt("Por favor, introduce el segundo número:");
-    if (!esNumero(numero1) || !esNumero(numero2)) {
+    if (isNaN(numero1) || isNaN(numero2)) {
         alert("Por favor, introduce valores numéricos para ambos números.");
     }
-} while (!esNumero(numero1) || !esNumero(numero2));
+} while (isNaN(numero1) || isNaN(numero2));
 
-
-numero1 = parseFloat(numero1);
-numero2 = parseFloat(numero2);
+numero1 = Number(numero1);
+numero2 = Number(numero2);
 
 // Comparamos los números e indicamos cuál es mayor o si son iguales
 if (numero1 > numero2) {
@@ -220,7 +211,19 @@ if (numero1 > numero2) {
 -  Pintar un cuadrado de asteriscos de 5 por cada lado
 
 ```Javascript
+let lado = 5;
 
+for (let i = 1; i <= lado; i++) {
+    let linea = "";
+    for (let j = 1; j <= lado; j++) {
+        if (i === 1 || i === lado || j === 1 || j === lado) {
+            linea += "*";
+        } else {
+            linea += " ";
+        }
+    }
+    console.log(linea);   
+}
 ```
 
 ## Ejercicio No.10°
@@ -228,26 +231,23 @@ if (numero1 > numero2) {
 - Cree esta figura por pantalla con JS
 
 ```Javascript
-// pintamos la figura con asteriscos
-function pintarFigura(filas) {
-    let longitudMaxima = filas * 2 - 1;
-    let mitad = Math.ceil(filas / 2);
+let filas = 5;
+let longitudMaxima = filas * 2 - 1;
+let mitad = Math.ceil(filas / 2);
 
-    for (let i = 1; i <= filas; i++) {
-        let asteriscos = i * 2 - 1;
-        let espacios = (longitudMaxima - asteriscos) / 2;
+for (let i = 1; i <= filas; i++) {
+    let asteriscos = i * 2 - 1;
+    let espacios = (longitudMaxima - asteriscos) / 2;
 
-        let fila = " ".repeat(espacios) + "*".repeat(asteriscos);
-        console.log(fila);
-    }
-
-    for (let i = mitad - 1; i >= 1; i--) {
-        let asteriscos = i * 2 - 1;
-        let espacios = (longitudMaxima - asteriscos) / 2;
-
-        let fila = " ".repeat(espacios) + "*".repeat(asteriscos);
-        console.log(fila);
-    }
+    let fila = " ".repeat(espacios) + "*".repeat(asteriscos);
+    console.log(fila);
 }
-pintarFigura(5);
+
+for (let i = mitad - 1; i >= 1; i--) {
+    let asteriscos = i * 2 - 1;
+    let espacios = (longitudMaxima - asteriscos) / 2;
+
+    let fila = " ".repeat(espacios) + "*".repeat(asteriscos);
+    console.log(fila);
+}
 ```

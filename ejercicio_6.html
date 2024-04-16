@@ -8,19 +8,15 @@
 <body>
 
 <script>
-function esNumero(valor) {
-    return !isNaN(parseFloat(valor)) && isFinite(valor);
-}
-
 // Ingresar dos números y la operación
 let numero1 = prompt("Por favor, introduce el primer número:");
 let numero2 = prompt("Por favor, introduce el segundo número:");
 let operacion = prompt("Por favor, introduce la operación (+, -, *, /):");
 
 // Verificamos si los valores ingresados son números
-if (esNumero(numero1) && esNumero(numero2)) {
-    let num1 = parseFloat(numero1);
-    let num2 = parseFloat(numero2);
+if (!isNaN(numero1) && !isNaN(numero2)) {
+    let num1 = Number(numero1);
+    let num2 = Number(numero2);
     
     // Realizamos la operación según la opción ingresada
     let resultado;
@@ -42,8 +38,10 @@ if (esNumero(numero1) && esNumero(numero2)) {
             break;
     }
 
-    if (resultado !== undefined) {
+    if (resultado !== undefined && !isNaN(resultado)) {
         alert("El resultado de la operación es: " + resultado);
+    } else {
+        alert("El resultado de la operación no es un número válido.");
     }
 } else {
     // Si al menos uno de los valores ingresados no es numérico, mostramos un mensaje de error
