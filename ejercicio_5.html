@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumador de números</title>
+</head>
+<body>
+
+<script>
+// Función para validar si un valor es numérico
+function esNumero(valor) {
+    return !isNaN(parseFloat(valor)) && isFinite(valor);
+}
+
+// Ingresar dos números
+let numero1 = prompt("Por favor, introduce el primer número:");
+let numero2 = prompt("Por favor, introduce el segundo número:");
+
+// Revisamos si los valores ingresados son números
+if (esNumero(numero1) && esNumero(numero2)) 
+{
+    let suma = parseFloat(numero1) + parseFloat(numero2);
+    
+    alert("La suma de los dos números es: " + suma);
+} else {
+    alert("Al menos uno de los valores ingresados no es un número.");
+}
+</script>
+
+</body>
+</html>

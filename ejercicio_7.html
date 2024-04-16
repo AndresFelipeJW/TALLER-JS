@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de notas</title>
+</head>
+<body>
+
+<script>
+function esNumero(valor) {
+    return !isNaN(parseFloat(valor)) && isFinite(valor);
+}
+
+function pedirNota(numeroNota) {
+    let nota;
+    do {
+        nota = prompt("Por favor, introduce la nota " + numeroNota + ":");
+        if (!esNumero(nota)) {
+            alert("Por favor, introduce un valor numérico para la nota " + numeroNota + ".");
+        }
+    } while (!esNumero(nota));
+    return parseFloat(nota);
+}
+
+// Ingresar las tres notas
+let nota1 = pedirNota(1);
+let nota2 = pedirNota(2);
+let nota3 = pedirNota(3);
+
+
+let media = (nota1 + nota2 + nota3) / 3;
+
+// Determinamos si el estudiante está aprobado o reprobado
+let estado;
+if (media >= 3) {
+    estado = "aprobado";
+} else {
+    estado = "reprobado";
+}
+
+
+alert("La nota media del estudiante es: " + media.toFixed(2) + ". Está " + estado + ".");
+</script>
+
+</body>
+</html>

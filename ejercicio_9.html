@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuadrado de asteriscos en consola</title>
+</head>
+<body>
+
+<script>
+// Pintamos el cuadrado de asteriscos en la consola
+function pintarCuadrado(lado) 
+{
+    for (let i = 1; i <= lado; i++) {
+        let linea = "";
+        for (let j = 1; j <= lado; j++) {
+            if (i === 1 || i === lado || j === 1 || j === lado) {
+                linea += "*";
+            } else {
+                linea += " ";
+            }
+        }
+        console.log(linea);   
+    }
+}
+
+
+pintarCuadrado(5);
+</script>
+
+</body>
+</html>
+
+
